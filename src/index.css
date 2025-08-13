@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Eric Wambua Portfolio - Futuristic Design System 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark futuristic background */
+    --background: 222 20% 6%;
+    --foreground: 210 20% 95%;
+
+    /* Card components */
+    --card: 222 15% 12%;
+    --card-foreground: 210 20% 95%;
+
+    /* Popover components */
+    --popover: 222 15% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Primary - Neon Blue */
+    --primary: 200 100% 60%;
+    --primary-foreground: 222 20% 6%;
+    --primary-glow: 200 100% 70%;
+
+    /* Secondary - Silver gradient tones */
+    --secondary: 215 15% 25%;
+    --secondary-foreground: 210 20% 95%;
+
+    /* Muted tones */
+    --muted: 215 10% 20%;
+    --muted-foreground: 215 10% 60%;
+
+    /* Accent - Cyan/teal highlights */
+    --accent: 180 100% 50%;
+    --accent-foreground: 222 20% 6%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 95%;
+
+    /* Borders and inputs */
+    --border: 215 15% 25%;
+    --input: 215 15% 18%;
+    --ring: 200 100% 60%;
+
+    /* Kenya-inspired accent */
+    --kenya-green: 120 40% 35%;
+    --kenya-red: 0 80% 45%;
+    --kenya-black: 0 0% 8%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-silver: linear-gradient(135deg, hsl(215 15% 40%), hsl(215 15% 60%));
+    --gradient-neon: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--accent)));
+    --gradient-kenya: linear-gradient(45deg, hsl(var(--kenya-green)), hsl(var(--kenya-red)), hsl(var(--kenya-black)));
+
+    /* Shadows and glows */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
+
+    /* Animation timings */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter overflow-x-hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Futuristic Button Variants */
+  .btn-neon {
+    @apply relative px-8 py-3 bg-transparent border-2 border-primary text-primary font-semibold rounded-lg 
+           transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-neon)]
+           before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/20 before:to-accent/20 
+           before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 before:rounded-lg;
+  }
+
+  .btn-kenya {
+    @apply bg-gradient-to-r from-kenya-green to-kenya-red text-white font-bold px-8 py-3 rounded-lg
+           hover:shadow-lg transition-all duration-300 hover:scale-105;
+  }
+
+  /* Text Gradients */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .text-gradient-silver {
+    @apply bg-gradient-to-r from-slate-300 to-slate-500 bg-clip-text text-transparent;
+  }
+
+  /* Glowing Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .glow-soft {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Card Hover Effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-card)];
+  }
+
+  /* Loading Animation */
+  .pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite alternate;
+  }
+
+  /* Cursor Trail Effect */
+  .cursor-trail {
+    pointer-events: none;
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%);
+    transition: transform 0.1s ease-out;
+    z-index: 9999;
+  }
+}
+
+@layer utilities {
+  /* Font Families */
+  .font-space-grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-jetbrains {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* 3D Transform Utilities */
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Custom Scrollbar */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+
+  /* Grid pattern for background */
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes pulse-neon {
+  0% {
+    box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary));
+  }
+  100% {
+    box-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary));
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
